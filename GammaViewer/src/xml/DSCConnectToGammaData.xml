@@ -1,0 +1,107 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    <SourceProxy name="GammaEpochReader" label="Raw Gamma Data (DSIC)"
+      class="GammaEpochReader"> 
+      <OutputPort name="Drift Tubes" index="0" />
+      <!-- <OutputPort name="Gamma Ball" index="1" /> -->
+      <Documentation
+         short_help="Connect To DSC Server"
+         long_help="Connect To DSC Server">
+      </Documentation>
+       
+      <Property
+        name="LoadGeometryFile"
+        command="LoadGeometryFile" >
+      </Property>
+
+      <IntVectorProperty
+                        name="SystemName"
+                        command="SetMachineName"
+                        number_of_elements="1"
+                        default_values="4">
+        <EnumerationDomain name="enum">
+          <Entry value="1" text="Prince"/>
+          <Entry value="2" text="Skittles"/>
+          <Entry value="3" text="Wookie"/>
+          <Entry value="4" text="SoulCrusher!"/>
+        </EnumerationDomain>
+        <Documentation>
+          This property indicates which system will be connected to 
+        </Documentation>
+      </IntVectorProperty>
+
+      <IntVectorProperty name="ConnectToZeroMQ"
+                         command="ToggleConnection"
+                         number_of_elements="1"
+                         default_values="0">
+        <Documentation>
+          Check to connect to ZeroMQ
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+      <IntVectorProperty name="Accumulation Time"
+                         command="SetUpdateTimeInterval"
+                         number_of_elements="1"
+                         default_values="10">
+        <Documentation>
+          Set the time between rate calculations
+        </Documentation>
+      </IntVectorProperty>
+      
+      <Property name="UpdateRenderer"
+                panel_widget="update_widget_type">
+      </Property>
+      
+    <IntVectorProperty name="AutomaticallyUpdateRenderer"
+                          number_of_elements="1"
+                          default_values="0"
+                          panel_widget="auto_update_widget_type">
+      <Documentation>
+        Custom widget to allow creation of timer for auto update
+      </Documentation>
+      <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+       
+      <IntVectorProperty name="SubtractBackground"
+                         command="ToggleBackgroundSubtract"
+                         number_of_elements="1"
+                         default_values="0">
+        <Documentation>
+          Enable Background Subtraction 
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+      <Property name="Build Gamma Background"
+                command="BuildGammaBackground">
+      </Property>
+      <Property name="Save Gamma Background File"
+                command="WriteGammaBackgroundFile">
+      </Property>
+      <Property name="Load Gamma Background File"
+                command="LoadGammaBackgroundFile">
+      </Property>
+
+      <IntVectorProperty
+         name="HasData"
+         command="HasData"
+         information_only="1">
+       <SimpleIntInformationHelper/>
+      </IntVectorProperty>
+      
+      <Property name="UpdatePipeline"
+                command="UpdatePipeline"
+                panel_visibility="never">
+       <!--   information_only="1"> -->
+       <!-- <SimpleIntInformationHelper/> -->
+      </Property>
+      
+      
+      <Hints>
+	      <ShowInMenu category="MMPDS DAS" />
+	    </Hints>
+      
+    </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

@@ -1,0 +1,4 @@
+<ParaViewFilters>
+  <Category name="Gamma Visualization (DSIC)" menu_label="&amp;Gamma Data Visualization">
+    <Filter name="LoadGeometryFile" />
+</ParaViewFilters>

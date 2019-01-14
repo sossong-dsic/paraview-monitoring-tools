@@ -1,0 +1,49 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+    <SourceProxy name="LoadGeometryFile" class="LoadGeometryFile" label="Load Geometry Binary File (DSIC)">
+      
+      <InputProperty command="SetInputConnection"
+                     name="Input">
+        <ProxyGroupDomain name="groups">
+          <Group name="sources" />
+          <Group name="filters" />
+        </ProxyGroupDomain>
+        <DataTypeDomain name="input_type">
+          <DataType value="vtkPolyData" />
+        </DataTypeDomain>
+        <Documentation>The input.</Documentation>
+      </InputProperty>
+      
+      <StringVectorProperty name="FileName"
+                        command="SetFileName"
+                        number_of_elements="1"
+                        default_values="1">
+  	  </StringVectorProperty>
+  	  
+  	  <DoubleVectorProperty
+         name="TubeRange"
+         command="SetTubeRange"
+         number_of_elements="2"
+         animateable="1"
+         default_values="0.0 576.0"
+         panel_visibility="default">
+         >
+        <DoubleRangeDomain name="range"/>
+        <Documentation>
+          This property specifies the range of tubes to cut on.
+        </Documentation>
+      </DoubleVectorProperty>
+  	  
+      <DoubleVectorProperty command="SetEdgeColor"
+        default_values="255 255 255"
+        name="EdgeColor"
+        panel_widget="color_selector"
+        panel_visibility="advanced">
+	  </DoubleVectorProperty>
+	  <Hints>
+	    <ShowInMenu category="Particle Track Filters (DSIC)" />
+	  </Hints>
+
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

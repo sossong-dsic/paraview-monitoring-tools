@@ -1,0 +1,45 @@
+<!--
+==========================================================================
+
+     Program: MTView
+
+     Copyright (c) 2015 Decision Sciences International Corporation
+     All rights reserved.
+
+     Author: Kevin Dean
+
+==========================================================================
+-->
+
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    
+    <SourceProxy name ="GeometryDriftTubeSection" class="GeometryDriftTubeSection" 
+    			 label="Read In Binary Geometry Drift Tube Sections">
+    			 
+      <Documentation 
+        short_help="Read In Binary Geometry Drift Tube Sections."
+      	long_help="Read In Binary Geometry Drift Tube Sections." >			 
+      </Documentation>
+      
+      <StringVectorProperty
+        name="FileName"
+        command="SetFileName"
+        number_of_elements="1">
+        <FileListDomain name="files"/>
+      </StringVectorProperty>
+      
+      <Hints>
+        <ReaderFactory extensions="bin"
+                       file_description="GeometryInfo" />
+                       
+        <Property name="FileName" show="1"/>
+      </Hints>
+      
+    </SourceProxy>
+    <!-- End Reader -->
+    
+  </ProxyGroup>
+  <!-- End Filters Group -->
+  
+</ServerManagerConfiguration>

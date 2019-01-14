@@ -1,0 +1,68 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+   <SourceProxy name="MyAnisotropicDiffusion" class="vtkImageAnisotropicDiffusion3D" label="Anisotropic Diffusion">
+     <Documentation
+        long_help="Apply an Anisotropic Diffusion Filter"
+        short_help="Apply an Anisotropic Diffusion Filter">
+     </Documentation>
+     <InputProperty
+        name="Input"
+        command="SetInputConnection">
+           <ProxyGroupDomain name="groups">
+             <Group name="sources"/>
+             <Group name="filters"/>
+           </ProxyGroupDomain>
+           <DataTypeDomain name="input_type">
+             <DataType value="vtkDataSet"/>
+           </DataTypeDomain>
+      </InputProperty>
+      
+      <IntVectorProperty name="NumberOfInterations"
+                         command="SetNumberOfIterations"
+                         number_of_elements="1"
+                         default_values="2">
+        <IntRangeDomain name="range" min="1" max="10.0" />
+      </IntVectorProperty>
+
+      <DoubleVectorProperty name="DiffusionThreshold"
+                            command="SetDiffusionThreshold"
+                            number_of_elements="1"
+                            default_values="5.0">
+        <DoubleRangeDomain name="range" min="0.0" max="10.0" />
+      </DoubleVectorProperty>
+      
+      <DoubleVectorProperty name="DiffusionFactor"
+                            command="SetDiffusionFactor"
+                            number_of_elements="1"
+                            default_values="2.0">
+        <DoubleRangeDomain name="range" min="0.0" max="100.0" />
+      </DoubleVectorProperty>
+
+      <IntVectorProperty name="GradientMagnitudeThreshold"
+                         command="SetGradientMagnitudeThreshold"
+                         number_of_elements="1"
+                         default_values="0">
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+      <IntVectorProperty name="Edges"
+                         command="SetEdges"
+                         number_of_elements="1"
+                         default_values="0">
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+
+      <IntVectorProperty name="Corners"
+                         command="SetCorners"
+                         number_of_elements="1"
+                         default_values="0">
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+	  <Hints>
+	    <ShowInMenu category="Custom Image Filters" />
+	  </Hints>
+
+
+   </SourceProxy>
+ </ProxyGroup>
+</ServerManagerConfiguration>

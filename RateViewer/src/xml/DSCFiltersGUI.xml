@@ -1,0 +1,4 @@
+<ParaViewFilters>
+  <Category name="Rate Visualization (DSIC)" menu_label="&amp;Rate Visualization">
+    <Filter name="LoadGeometryFile" />
+</ParaViewFilters>

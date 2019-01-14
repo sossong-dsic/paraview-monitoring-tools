@@ -1,0 +1,90 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    <SourceProxy name="ConnectToVTPScanTime"  label="KafKa VTP Scan Time Display"
+      class="DssVtpScanTime">
+      <OutputPort name="DssVtpScanTime" index="0" />
+      
+      <Documentation
+         short_help="Connect To DSC Server"
+         long_help="Connect To DSC Server">
+      </Documentation>
+      
+      <IntVectorProperty
+                        name="SystemName"
+                        command="SetMachineName"
+                        number_of_elements="1"
+                        default_values="4">
+        <EnumerationDomain name="enum">
+          <Entry value="1" text="Prince"/>
+          <Entry value="2" text="Skittles"/>
+          <Entry value="3" text="Wookie"/>
+          <Entry value="4" text="SoulCrusher!"/>
+        </EnumerationDomain>
+        <Documentation>
+          This property indicates which system will be connected to 
+        </Documentation>
+      </IntVectorProperty>
+
+      <IntVectorProperty name="ConnectToKafka"
+                         command="ToggleConnection"
+                         number_of_elements="1"
+                         default_values="0">
+        <Documentation>
+          Check to connect to Kafka
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+
+      <Property
+        name="ReadKafkaBus"
+        command="ReadKafkaBus" />
+
+      <Property
+        name="ForceReadKafkaBus"
+        command="ForceReadKafkaBus" />
+
+
+      <Property name="UpdateRenderer"
+                panel_widget="update_widget_type">
+      </Property>
+      
+    <IntVectorProperty name="AutomaticallyReadFromKafka"
+                          number_of_elements="1"
+                          default_values="0"
+                          panel_widget="auto_read_widget_type">
+      <Documentation>
+        Custom widget to allow creation of timer for auto kafka read
+      </Documentation>
+      <BooleanDomain name="bool"/>
+    </IntVectorProperty>
+      
+      <Property
+        name="Clear"
+        command="Clear" />
+        
+      <IntVectorProperty
+         name="HasData"
+         command="HasData"
+         information_only="1">
+       <SimpleIntInformationHelper/>
+      </IntVectorProperty>
+      
+      <DoubleVectorProperty command="SetEdgeColor"
+        default_values="255 255 255"
+        name="EdgeColor"
+        panel_widget="color_selector"
+        panel_visibility="advanced">
+	  </DoubleVectorProperty>
+      <Property name="UpdatePipeline"
+                command="UpdatePipeline"
+                panel_visibility="never">
+      </Property>
+      
+      
+      <Hints>
+	      <ShowInMenu category="MMPDS DSS" />
+	    </Hints>
+
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

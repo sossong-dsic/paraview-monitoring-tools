@@ -1,0 +1,69 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+    <SourceProxy name="FilterDriftTubes" class="FilterDriftTubes" label="Filter Drift Tubes (DSIC)">
+      
+      <OutputPort name="Filtered Drift Tubes" index="0" />
+      <OutputPort name="Filtered Outliers" index="1" />
+      
+      <InputProperty command="SetInputConnection"
+                     name="Input">
+        <ProxyGroupDomain name="groups">
+          <Group name="sources" />
+          <Group name="filters" />
+        </ProxyGroupDomain>
+        <DataTypeDomain name="input_type">
+          <DataType value="vtkPolyData" />
+        </DataTypeDomain>
+        <Documentation>The input.</Documentation>
+      </InputProperty>
+      
+      <Property name="LoadGeometryFile"
+      			command="LoadGeometryFile" />
+      
+      <DoubleVectorProperty
+         name="TubeRange"
+         command="SetTubeRange"
+         number_of_elements="2"
+         animateable="1"
+         default_values="0.0 576.0"
+         panel_visibility="default">
+         >
+        <DoubleRangeDomain name="range"/>
+        <Documentation>
+          This property specifies the range of tubes to cut on.
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <IntVectorProperty 	name="Outliers"
+                            command="SetOutliers"
+                            number_of_elements="1"
+                            default_values="0"/>
+      
+      <IntVectorProperty 	name="Ambiguity"
+                            command="SetAmbiguity"
+                            number_of_elements="1"
+                            default_values="10"/>
+      
+      <DoubleVectorProperty name="Drift"
+                            command="SetDrift"
+                            number_of_elements="1"
+                            default_values="10"/>
+      
+      <DoubleVectorProperty name="DriftTime"
+                            command="SetDriftTime"
+                            number_of_elements="1"
+                            default_values="500"/>
+      
+      <DoubleVectorProperty command="SetEdgeColor"
+        default_values="255 255 255"
+        name="EdgeColor"
+        panel_widget="color_selector"
+        panel_visibility="advanced">
+	  </DoubleVectorProperty>
+	  <Hints>
+	    <ShowInMenu category="Particle Track Filters (DSIC)" />
+	  </Hints>
+
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

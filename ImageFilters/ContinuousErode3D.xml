@@ -1,0 +1,32 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+   <SourceProxy name="MyContinuousErode3D" class="vtkImageContinuousErode3D" label="Continuous Erode 3D">
+     <Documentation
+        long_help="Erode the image (replace each voxel with the minimum within the kernel)"
+        short_help="Erode the image">
+     </Documentation>
+     <InputProperty
+        name="Input"
+        command="SetInputConnection">
+           <ProxyGroupDomain name="groups">
+             <Group name="sources"/>
+             <Group name="filters"/>
+           </ProxyGroupDomain>
+           <DataTypeDomain name="input_type">
+             <DataType value="vtkDataSet"/>
+           </DataTypeDomain>
+      </InputProperty>
+
+      <IntVectorProperty name="KernelSize"
+                            command="SetKernelSize"
+                            number_of_elements="3"
+                            default_values="1 1 3">
+      </IntVectorProperty>
+      
+      <Hints>
+	    <ShowInMenu category="Custom Image Filters" />
+	  </Hints>
+ 
+   </SourceProxy>
+ </ProxyGroup>
+</ServerManagerConfiguration>

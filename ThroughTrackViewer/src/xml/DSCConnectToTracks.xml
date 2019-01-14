@@ -1,0 +1,106 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    <SourceProxy name="ConnectToZeroMQParticleTracks" label="ZeroMQ Particle Tracks (DSIC)"
+      class="ThroughTrackViewer"> 
+      <OutputPort name="Incoming Trajectory" index="0" />
+      <OutputPort name="Outgoing Trajectory" index="1" />
+      
+      <Documentation
+         short_help="Connect To DSC Server"
+         long_help="Connect To DSC Server">
+      </Documentation>
+      
+      <IntVectorProperty
+                        name="SystemName"
+                        command="SetMachineName"
+                        number_of_elements="1"
+                        default_values="5">
+        <EnumerationDomain name="enum">
+          <Entry value="1" text="Prince"/>
+          <Entry value="2" text="Skittles"/>
+          <Entry value="3" text="Wookie"/>
+          <Entry value="4" text="SoulCrusher!"/>
+          <Entry value="5" text="Nacho!"/>
+        </EnumerationDomain>
+        <Documentation>
+          This property indicates which system will be connected to 
+        </Documentation>
+      </IntVectorProperty>
+      
+      <IntVectorProperty name="Filtered"
+                         command="SetFiltered"
+                         number_of_elements="1"
+                         default_values="0">
+        <Documentation>
+          Check to show filtered tracks
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+
+      <IntVectorProperty name="ConnectToZeroMQ"
+                         command="ToggleConnection"
+                         number_of_elements="1"
+                         default_values="0">
+        <Documentation>
+          Check to connect to ZeroMQ
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+
+      <IntVectorProperty name="Accumulation Time"
+                         command="SetUpdateTimeInterval"
+                         number_of_elements="1"
+                         default_values="1">
+        <Documentation>
+          Set the time between rate calculations
+        </Documentation>
+      </IntVectorProperty>
+
+      <Property name="UpdateRenderer"
+                panel_widget="update_widget_type">
+      </Property>
+      
+    <IntVectorProperty name="AutomaticallyUpdateRenderer"
+                          number_of_elements="1"
+                          default_values="0"
+                          panel_widget="auto_update_widget_type">
+      <Documentation>
+        Custom widget to allow creation of timer for auto update
+      </Documentation>
+      <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+
+      <Property
+        name="Clear"
+        command="Clear" />
+      
+      <DoubleVectorProperty name="Minimum Scattering Angle"
+                         command="SetMinScatteringAngleCut"
+                         number_of_elements="1"
+                         default_values="0.0">
+        <Documentation>
+          Set the time between rate calculations
+        </Documentation>
+      </DoubleVectorProperty>
+
+      <IntVectorProperty
+         name="HasData"
+         command="HasData"
+         information_only="1">
+       <SimpleIntInformationHelper/>
+      </IntVectorProperty>
+      
+      <Property name="UpdatePipeline"
+                command="UpdatePipeline"
+                panel_visibility="never">
+       <!--   information_only="1"> -->
+       <!-- <SimpleIntInformationHelper/> -->
+      </Property>
+      
+      
+	  <Hints>
+	    <ShowInMenu category="MMPDS DAS" />
+	  </Hints>
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

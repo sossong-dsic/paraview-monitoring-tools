@@ -1,0 +1,66 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    <SourceProxy name="OpenThroughTrackEventsAvro" label="Avro Particle Track Events (DSIC)"
+      class="ThroughTrackEventAvroViewer">
+      
+      <OutputPort name="IncomingParticle Trajectory" index="0" />
+      <OutputPort name="OutgoingParticle Trajectory" index="1" />
+      <OutputPort name="Drift Tubes" index="2" />
+      <OutputPort name="Drift Cylinders" index="3" />
+      <OutputPort name="Hit Lines" index="4" />
+      <OutputPort name="Kalman Tracks" index="5" />
+      
+      <Documentation
+         short_help="Open an Avro file of ThroughTrackEventPackets"
+         long_help="Open an Avro file of ThroughTrackEventPackets">
+      </Documentation>
+
+      <Property
+        name="LoadGeometryFile"
+        command="LoadGeometryFile" >
+      </Property>
+      <Property
+        name="OpenAvro"
+        command="OpenAvro" >
+      </Property>
+
+      <Property name="PullNextTrack"
+                command="PullNextTrack">
+      </Property>
+
+      <Property name="UpdateRenderer"
+                panel_widget="update_widget_type">
+      </Property>
+      
+    <IntVectorProperty name="AutomaticallyUpdatePipeline"
+                          number_of_elements="1"
+                          default_values="0"
+                          panel_widget="auto_update_widget_type">
+      <Documentation>
+        Custom widget to allow creation of timer for auto update
+      </Documentation>
+      <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+       
+      <IntVectorProperty
+         name="HasData"
+         command="HasData"
+         information_only="1">
+       <SimpleIntInformationHelper/>
+      </IntVectorProperty>
+      
+      <Property name="UpdatePipeline"
+                command="UpdatePipeline"
+                panel_visibility="never">
+       <!--   information_only="1"> -->
+       <!-- <SimpleIntInformationHelper/> -->
+      </Property>
+      
+      
+      <Hints>
+	      <ShowInMenu category="MMPDS DAS" />
+	    </Hints>
+
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

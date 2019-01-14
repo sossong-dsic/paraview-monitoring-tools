@@ -1,0 +1,61 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    <SourceProxy name="OpenEventsAvro" label="Avro Events (DSIC)"
+      class="EventAvroViewer">
+      
+      <OutputPort name="Drift Tubes" index="0" />
+      
+      <Documentation
+         short_help="Open an Avro file of EventPackets"
+         long_help="Open an Avro file of EventPackets">
+      </Documentation>
+
+      <Property
+        name="LoadGeometryFile"
+        command="LoadGeometryFile" >
+      </Property>
+      <Property
+        name="OpenAvro"
+        command="OpenAvro" >
+      </Property>
+
+      <Property name="PullNextEvent"
+                command="PullNextEvent">
+      </Property>
+      
+      <Property name="UpdateRenderer"
+                panel_widget="update_widget_type">
+      </Property>
+      
+    <IntVectorProperty name="AutomaticallyUpdatePipeline"
+                          number_of_elements="1"
+                          default_values="0"
+                          panel_widget="auto_update_widget_type">
+      <Documentation>
+        Custom widget to allow creation of timer for auto update
+      </Documentation>
+      <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+       
+      <IntVectorProperty
+         name="HasData"
+         command="HasData"
+         information_only="1">
+       <SimpleIntInformationHelper/>
+      </IntVectorProperty>
+      
+      <Property name="UpdatePipeline"
+                command="UpdatePipeline"
+                panel_visibility="never">
+       <!--   information_only="1"> -->
+       <!-- <SimpleIntInformationHelper/> -->
+      </Property>
+      
+      
+      <Hints>
+	      <ShowInMenu category="MMPDS DAS" />
+	    </Hints>
+
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

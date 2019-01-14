@@ -1,0 +1,89 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="sources">
+    <SourceProxy name="ConnectToDDSTrajectory" label="ZeroMQ Through Track Events (DSIC)"
+      class="ThroughTrackEventViewer">
+      
+      <OutputPort name="IncomingParticle Trajectory" index="0" />
+      <OutputPort name="OutgoingParticle Trajectory" index="1" />
+      <OutputPort name="Drift Tubes" index="2" />
+      <OutputPort name="Drift Cylinders" index="3" />
+      <OutputPort name="Hit Lines" index="4" />
+      <OutputPort name="Kalman Tracks" index="5" />
+      
+      <Documentation
+         short_help="Connect To DSC Server"
+         long_help="Connect To DSC Server">
+      </Documentation>
+
+      <Property
+        name="LoadGeometryFile"
+        command="LoadGeometryFile" >
+      </Property>
+
+      <Property name="PullNextTrack"
+                command="PullNextTrack">
+      </Property>
+      <Property name="UpdateRenderer"
+                panel_widget="update_widget_type">
+      </Property>
+      
+      <IntVectorProperty
+                        name="SystemName"
+                        command="SetMachineName"
+                        number_of_elements="1"
+                        default_values="5">
+        <EnumerationDomain name="enum">
+          <Entry value="1" text="Prince"/>
+          <Entry value="2" text="Skittles"/>
+          <Entry value="3" text="Wookie"/>
+          <Entry value="4" text="SoulCrusher!"/>
+          <Entry value="5" text="Nacho!"/>
+        </EnumerationDomain>
+        <Documentation>
+          This property indicates which system will be connected to 
+        </Documentation>
+      </IntVectorProperty>
+      
+    <IntVectorProperty name="Filtered"
+      command="SetFiltered"
+      number_of_elements="1"
+      default_values="0"> 
+      <Documentation>
+          Check to show filtered tracks
+      </Documentation>
+      <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+
+    <IntVectorProperty name="AutomaticallyUpdateRenderer"
+                          number_of_elements="1"
+                          default_values="0"
+                          panel_widget="auto_update_widget_type">
+      <Documentation>
+        Custom widget to allow creation of timer for auto update
+      </Documentation>
+      <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+       
+      <IntVectorProperty
+         name="HasData"
+         command="HasData"
+         information_only="1">
+       <SimpleIntInformationHelper/>
+      </IntVectorProperty>
+      
+      <Property name="UpdatePipeline"
+                command="UpdatePipeline"
+                panel_visibility="never">
+       <!--   information_only="1"> -->
+       <!-- <SimpleIntInformationHelper/> -->
+      </Property>
+      
+      
+      <Hints>
+	      <ShowInMenu category="MMPDS DAS" />
+	    </Hints>
+
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

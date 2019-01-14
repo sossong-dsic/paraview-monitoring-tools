@@ -1,0 +1,5 @@
+<ParaViewFilters>
+  <Category name="Particle Track Filters (DSIC)" menu_label="&amp;DSC Particle Tracks Library">
+    <Filter name="TrackManipulation" />
+    <Filter name="FilteredTubes" />
+</ParaViewFilters>

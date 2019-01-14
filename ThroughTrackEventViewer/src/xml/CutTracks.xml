@@ -1,0 +1,102 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+    <SourceProxy name="TrackManipulation" class="TrackManipulation" label="Filter Particle Tracks (DSIC)">
+      
+      <OutputPort name="Filtered Particle Trajectory" index="0" />
+      <OutputPort name="Filtered PoCA Points" index="1" />
+      
+      <InputProperty command="SetInputConnection"
+                     name="Input">
+        <ProxyGroupDomain name="groups">
+          <Group name="sources" />
+          <Group name="filters" />
+        </ProxyGroupDomain>
+        <DataTypeDomain name="input_type">
+          <DataType value="vtkPolyData" />
+        </DataTypeDomain>
+        <Documentation>The input.</Documentation>
+      </InputProperty>
+      
+      <DoubleVectorProperty name="Momentum"
+                            command="SetMomentum"
+                            number_of_elements="1"
+                            default_values="0"/>
+      
+      <DoubleVectorProperty name="ScatteringAngle"
+                            command="SetScatteringAngle"
+                            number_of_elements="1"
+                            default_values="0.002"/>
+      
+      <DoubleVectorProperty name="DOCA"
+                            command="SetDOCA"
+                            number_of_elements="1"
+                            default_values="3"/>
+      
+      <DoubleVectorProperty
+         name="TrackLength"
+         command="SetTrackLength"
+         number_of_elements="1"
+         animateable="1"
+         default_values="250.0"
+         >
+        <DoubleRangeDomain name="range"/>
+        <Documentation>
+          This property specifies the 3D length of the particle track.
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <DoubleVectorProperty
+         name="XBounds"
+         command="SetXBounds"
+         number_of_elements="2"
+         animateable="1"
+         default_values="0.0 120.0"
+         panel_visibility="default">
+         >
+        <DoubleRangeDomain name="range"/>
+        <Documentation>
+          This property specifies the 3D coordinate of the x bounds of the scan volume.
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <DoubleVectorProperty
+         name="YBounds"
+         command="SetYBounds"
+         number_of_elements="2"
+         animateable="1"
+         default_values="0.0 120.0"
+         panel_visibility="default">
+         >
+        <DoubleRangeDomain name="range"/>
+        <Documentation>
+          This property specifies the 3D coordinate of the y bounds of the scan volume.
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <DoubleVectorProperty
+         name="ZBounds"
+         command="SetZBounds"
+         number_of_elements="2"
+         animateable="1"
+         default_values="90.0 180.0"
+         panel_visibility="default">
+         >
+        <DoubleRangeDomain name="range"/>
+        <Documentation>
+          This property specifies the 3D coordinate of the z bounds of the scan volume.
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <DoubleVectorProperty command="SetEdgeColor"
+        default_values="255 255 255"
+        name="EdgeColor"
+        panel_widget="color_selector"
+        panel_visibility="advanced">
+	  </DoubleVectorProperty>
+	  <Hints>
+	    <ShowInMenu category="Particle Track Filters (DSIC)" />
+	  </Hints>
+
+   </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

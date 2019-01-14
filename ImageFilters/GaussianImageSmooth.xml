@@ -1,0 +1,43 @@
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+   <SourceProxy name="MyGaussianImageSmooth" class="vtkImageGaussianSmooth" label="Gaussian Image Smooth">
+     <Documentation
+        long_help="Smooth the image according to a gaussian"
+        short_help="Smooth the image according to a gaussian">
+     </Documentation>
+     <InputProperty
+        name="Input"
+        command="SetInputConnection">
+           <ProxyGroupDomain name="groups">
+             <Group name="sources"/>
+             <Group name="filters"/>
+           </ProxyGroupDomain>
+           <DataTypeDomain name="input_type">
+             <DataType value="vtkImageData"/>
+           </DataTypeDomain>
+      </InputProperty>
+
+      <DoubleVectorProperty name="StandardDeviation"
+                            command="SetStandardDeviation"
+                            number_of_elements="1"
+                            default_values="2.0">
+        <DoubleRangeDomain name="range" min="0.0" max="10.0" />
+      </DoubleVectorProperty>
+      <DoubleVectorProperty name="StandardDeviations"
+                            command="SetStandardDeviations"
+                            number_of_elements="3"
+                            default_values="2.0 2.0 2.0">
+      </DoubleVectorProperty>
+      <DoubleVectorProperty name="RadiusFactor"
+                            command="SetRadiusFactor"
+                            number_of_elements="1"
+                            default_values="10.0">
+        <DoubleRangeDomain name="range" min="0.0" max="100.0" />
+      </DoubleVectorProperty>
+	  <Hints>
+	    <ShowInMenu category="Custom Image Filters" />
+	  </Hints>
+ 
+   </SourceProxy>
+ </ProxyGroup>
+</ServerManagerConfiguration>
